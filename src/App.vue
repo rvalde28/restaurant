@@ -1,20 +1,9 @@
-<script setup>
-import NavBar from './components/NavBar.vue'
-import Menu from './components/Menu.vue'
-// import Cart from './components/Cart.vue';
-</script>
-
 <template>
-  <!-- <Cart ref="cart"  /> -->
-
-  <div class="top-nav">
-    <NavBar/>
-  </div>
-  <div class="menu">
+  <div>
+    <NavBar :cartItems="cartItems" />
     <Menu @add-to-cart="addToCart" />
+    <Cart :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
   </div>
-  <Cart :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
-
 </template>
 
 <script>
@@ -61,54 +50,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.menu {
-  position:relative;
-  top: 10vh;
-  left:0px;
-  z-index: -1;
-  /* width: 100vw; */
-}
-
-.top-nav{
-  height: 10vh;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100vw;
-}
-
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-
-}
-
-@media (min-width: 200px) {
-  .top-nav {
-    height: 10vh;
-  }
-}
-
-
-@media (min-width: 600px) {
-  .top-nav {
-
-  }
-}
-
-@media (min-width: 1024px) {
-  .top-nav {
-
-  }
-}
-
-/* div {
-  display: inline-block;
-} */
-</style>

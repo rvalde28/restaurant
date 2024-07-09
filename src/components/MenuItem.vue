@@ -8,14 +8,14 @@
           </div>
 
           <div class="item-price">
-              {{ item.price }}
+              ${{ item.price }}
           </div >
 
           <div class="item-count center-div">
             <div class="input-count-grid">
-              <button class="count-button" @click="count--"> - </button>
-              <!-- <div class="count-number">{{ count }}</div> -->
-              <button class="count-button" @click="count++"> + </button>
+              <button class="count-button" @click="countSubtract()"> - </button>
+              <div class="count-number">{{ count }}</div>
+              <button class="count-button" @click="countAdd()"> + </button>
             </div>
           </div >
 
@@ -27,14 +27,35 @@
 </template>
 
 <script>
+  const maxOrders = 25
   export default {
     props: ['item'],
+    data() {
+    return {
+      count: 0,
+    };
+  },
     methods: {
       addToCart(item) {
         this.$emit('add-to-cart', item);
+      },
+      countAdd(){
+        if (this.count >= maxOrders){
+          this.count = maxOrders
+          return
+        }
+        this.count++
+      },
+      countSubtract(){
+        if (this.count <= 0){
+          this.count=0
+          return
+        } else{
+          this.count--
+        }
       }
     }
-  }
+  };
 </script>
   
 <style scoped>
@@ -85,7 +106,7 @@
   border-radius: 8px;
   color:#fff;
   background-color:#57B8FF;
-  font-size:2.2vw;
+  font-size:1.2vw;
   font-weight: 550 !important;
   border:0;
   cursor:pointer;

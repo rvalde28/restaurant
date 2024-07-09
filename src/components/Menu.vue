@@ -1,38 +1,32 @@
+/menu.vue
 <template>
-    <div class="wrapper">
-        <menu-item v-for="item in items" :key="item.id" :item="item" @add-to-cart="addToCartHandler(item)"></menu-item>
-    </div>
-
-    <div class="clearfix"></div>
+  <div class="wrapper">
+    <menu-item v-for="item in menuItems" :key="item.id" :item="item" @add-to-cart="addToCartHandler(item)"></menu-item>
+  </div>
 </template>
 
 <script>
-import MenuItem from './MenuItem.vue'
+import MenuItem from './MenuItem.vue';
 
-  export default {
-    components: {
-      MenuItem
-    },
-    data() {
-      return {
-        items: [
-          {
-            name: 'Carne Guisada',
-            price: 12.00
-          },
-          {
-            name: 'Tamales',
-            price: 15.00
-          }
-      ]}
-    },
-    methods: {
-      addToCartHandler(item) {
-        this.$emit('add-to-cart', item);
-      }
+export default {
+  components: {
+    MenuItem
+  },
+  data() {
+    return {
+      menuItems: [
+        { id: 1, name: 'Carne Guisada', price: 10 },
+        { id: 2, name: 'Tamales', price: 15 },
+        { id: 3, name: 'Tacos', price: 7.5 },
+      ]
+    };
+  },
+  methods: {
+    addToCartHandler(item) {
+      this.$emit('add-to-cart', item);
     }
   }
-  
+};
 </script>
 
 <style scoped>
