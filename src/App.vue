@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button class="shopping-button">Cart</button>
     <NavBar :cartItems="cartItems" />
     <Menu @add-to-cart="addToCart" />
     <Cart :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
@@ -50,3 +51,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.shopping-button {
+  position: fixed;
+  top:50vh;
+  right:.5vw;
+}
+</style>
