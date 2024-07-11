@@ -1,7 +1,6 @@
-/menu.vue
 <template>
-  <div class="wrapper">
-    <menu-item v-for="item in menuItems" :key="item.id" :item="item" @add-to-cart="addToCartHandler(item)"></menu-item>
+  <div class="wrapper center-div">
+    <menu-item v-for="item in menuItems" :key="item.id" :item="item" @add-to-cart="addToCartHandler"></menu-item>
   </div>
 </template>
 
@@ -15,6 +14,9 @@ export default {
   data() {
     return {
       menuItems: [
+        { id: 1, name: 'Carne Guisada', price: 10 },
+        { id: 2, name: 'Tamales', price: 15 },
+        { id: 3, name: 'Tacos', price: 7.5 },
         { id: 1, name: 'Carne Guisada', price: 10 },
         { id: 2, name: 'Tamales', price: 15 },
         { id: 3, name: 'Tacos', price: 7.5 },
@@ -37,35 +39,47 @@ export default {
   padding: 10px;
 }
 
+.center-div{
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .wrapper {
-    margin: 2rem;
+    position: relative;
+    /* margin: 2rem; */
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
-    margin-left: 10vw;
-    margin-right: 10vw;
     grid-gap: 5vw;
-    background-color: #fff;
+    background-color: #efece6;
     color: #444;
 }
 
-@media (min-width: 200px) {
+@media (min-width: 360px) {
   .wrapper {
-    margin-left: 12vw;
-    margin-right: 12vw;
-    grid-template-columns: 33vw 33vw; /* controls the number of columns */
+    grid-template-columns: 75vw; /* controls the number of columns */
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 512px) {
   .wrapper {
-    grid-template-columns: 25vw 25vw 25vw; /* controls the number of columns */
+    grid-template-columns: 75vw; /* controls the number of columns */
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 720px) {
   .wrapper {
-    margin-left: 8vw;
-    margin-right: 8vw;
-    grid-template-columns: 16vw 16vw 16vw 16vw; /* controls the number of columns */
+    grid-template-columns: 35vw 35vw; /* controls the number of columns */
   }
+}
+@media (min-width: 1080px) {
+  .wrapper {
+    margin-top: 1.5vw;
+    top: 2.2vw;;
+    grid-gap: 3vw;
+    grid-template-columns: 18vw 18vw 18vw ; /* controls the number of columns */
+  }
+
 }
 </style>

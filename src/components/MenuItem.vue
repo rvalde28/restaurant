@@ -1,7 +1,8 @@
 <template>
     <div class="box">
-      <img src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
-
+      <div class="image-div">
+        <img src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
+      </div>
       <div>
           <div class="item-name">
               {{ item.name }}
@@ -20,7 +21,7 @@
           </div >
 
           <div class="cart-button-div">
-            <button class="add-cart"  @click="addToCart"> Add to Cart </button>
+            <button class="add-cart"  @click="addToCart(item)"> Add to Cart </button>
           </div >
       </div>
     </div>
@@ -37,7 +38,13 @@
   },
     methods: {
       addToCart(item) {
-        this.$emit('add-to-cart', item);
+        let itemInstance={
+        name: item.name,
+        price: item.price,
+        count: this.count,
+        }
+        console.log("called")
+        this.$emit('add-to-cart', itemInstance);
       },
       countAdd(){
         if (this.count >= maxOrders){
@@ -88,6 +95,7 @@
 }
 .item-price{
   margin-inline: auto;
+  margin-bottom: 1vh;
 }
 
 .input-count-grid{
@@ -114,6 +122,7 @@
 }
 
 .item-name{
+  margin-bottom: .3vh;
   font-size: .9rem;
   text-align: center;
 }
@@ -130,41 +139,127 @@
   font-size: 150%;
 }
 img {
-    width: 90%;
-    object-fit: contain;
-    padding:10px;
-    /* padding-top: 18px;
-    padding-left: 18px;
-    padding-right: 18px; */
-  }
+  position: relative;
+  width: 100%;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-@media (min-width: 600px) {
+@media (min-width: 360px) {
   .input-count-grid {
     display: grid;
-    grid-template-columns: 2vw 5vw 2vw;
+    grid-template-columns: 4vw 12vw 4vw;
+  }
+
+  .item-name{
+    font-size: 5vw;
+    text-align: center;
+  }
+  .item-price{
+    font-size: 4vw;
+    text-align: center;
+  }
+  .count-button{
+    font-size: 4vw;
+    font-weight: lighter;
+    text-align: center;
+  }
+  .count-number{
+    font-size: 3.5vw;
+    text-align: center;
+  }
+  .add-cart{
+    font-size: 4.4vw;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 512px) {
+  .input-count-grid {
+    display: grid;
+    grid-template-columns: 4vw 12vw 4vw;
+  }
+
+  .item-name{
+    font-size: 5vw;
+    text-align: center;
+  }
+  .item-price{
+    font-size: 4vw;
+    text-align: center;
+  }
+  .count-button{
+    font-size: 4vw;
+    font-weight: lighter;
+    text-align: center;
+  }
+  .count-number{
+    font-size: 3.5vw;
+    text-align: center;
+  }
+  .add-cart{
+    font-size: 4.4vw;
+  }
+}
+
+@media (min-width: 720px) {
   .input-count-grid {
     display: grid;
     grid-template-columns: 2vw 5vw 2vw;
   }
+
   .item-name{
-    font-size: 1.1vw;
+    font-size: 2.2vw;
+    text-align: center;
+  }
+  .item-price{
+    font-size: 2.3vw;
+    text-align: center;
+  }
+  .count-button{
+    font-size: 2.5vw;
+    font-weight: lighter;
+    text-align: center;
+  }
+  .count-number{
+    font-size: 2.5vw;
+    text-align: center;
+  }
+  .add-cart{
+    font-size: 2.4vw;
+  }
+}
+@media (min-width: 1080px) {
+  .input-count-grid {
+    display: grid;
+    grid-template-columns: 2vw 5vw 2vw;
+  }
+
+  .image-div{
+    padding: .7vw;
+  }
+
+  .item-name{
+    font-size: 1.2vw;
     text-align: center;
   }
   .item-price{
     font-size: 1.1vw;
     text-align: center;
   }
-  .count-number{
-    font-size: 1.1vw;
+  .count-button{
+    font-size: 1.2vw;
+    font-weight: lighter;
     text-align: center;
   }
-  /* .add-cart {
-    font-size:1.1vw;
-  } */
+  .count-number{
+    font-size: .9vw;
+    text-align: center;
+  }
+  .add-cart{
+    font-size: 1.1vw;
+  }
 }
+
 </style>
   

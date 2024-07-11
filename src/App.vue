@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button class="shopping-button">Cart</button>
+    <button class="shopping-button" @click="expandCart()">Cart</button>
     <NavBar :cartItems="cartItems" />
-    <Menu @add-to-cart="addToCart" />
+    <Menu class="menu-app" @add-to-cart="addToCart" />
     <Cart :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
     };
   },
   methods: {
+    expandCart(){
+      document.getElementById("mySideNav").style.width="250px";
+    },
     addToCart(item) {
       this.cartItems.push(item); // Add item to cart
       this.saveCart(); // Save cart state to localStorage
@@ -53,6 +56,11 @@ export default {
 </script>
 
 <style>
+/* .menu-app{
+  overflow:scroll;
+  height:auto;
+  -webkit-overflow-scrolling: touch;
+} */
 .shopping-button {
   position: fixed;
   top:50vh;

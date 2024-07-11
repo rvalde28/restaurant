@@ -1,17 +1,58 @@
-<script setup>
+<script>
+// import { ref, onMounted } from 'vue'
+
+export default {
+  data() {
+    return {
+      useMobileNav: false,
+      windowWidth: window.innerWidth
+    }
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      if (this.windowWidth < 800){
+        this.useMobileNav=true
+      } else{
+        this.useMobileNav = false
+      }
+      window.addEventListener('resize', this.onResize);
+    })
+  },
+
+  beforeUnmount() { 
+    window.removeEventListener('resize', this.onResize); 
+  },
+  // created() {
+  //   window.addEventListener("resize", this.)
+  // }
+};
+
 </script>
 
 <template>
-    <div class="top-nav">
+    <div class="top-nav" v-if="!useMobileNav" >
       <div class="left-links">
-         <a class="links active" href="#">Home</a>
+         <a class="links active home center-text-vertically" href="#">Home</a>
       </div>
       <div class="right-links">
-        <a class="links" href="#"> Order Online</a>
-        <a class="links" href="#"> Menu</a>
-        <a class="links" href="#"> Contact Us</a>
-        <a class="links" href="#">Login</a>
+        <a class="links center-text-vertically" href="#"> Order Online</a>
+        <a class="links center-text-vertically" href="#"> Menu</a>
+        <a class="links center-text-vertically" href="#"> Contact Us</a>
+        <a class="links center-text-vertically" href="#">Login</a>
       </div>
+    </div>
+
+    <div class="mobile-nav" v-if="useMobileNav" >
+      <a href="#home">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
 </template>
 
@@ -19,16 +60,38 @@
 a {
     height: 100%;
 }
+
+.mobile-nav {
+  z-index: 10000;
+  background-color: #333;
+  overflow: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+.mobile-nav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
 .top-nav{
-    background-color: white;
-    height: 100%;
-    display: flex;
-    position: fixed;
-    top:0;
-    width: 100%;
-    overflow: auto;
-    height: auto;
-    color: gray;
+  z-index: 10000;
+  background-color: white;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  top:0;
+  width: 100%;
+  overflow: none;
+  height: auto;
+  color: gray;
 }
 
 .top-nav a.active {
@@ -44,10 +107,9 @@ a {
     float: left;
     color: gray;
     text-align: center;
+    height: 100%;
     padding-left: 14px;
     padding-right: 14px;
-    padding-top: 8px;
-    padding-bottom: 8px;
     text-decoration: none;
     font-size: 17px;
 }
@@ -61,23 +123,41 @@ a:selected{
 }
 
 
-@media (min-width: 200px) {
+
+@media (min-width: 360px) {
+  home{
+
+  }
   .links {
     font-size: .9rem;
   }
 }
 
-
-@media (min-width: 600px) {
+@media (min-width: 512px) {
   .links {
     font-size: .9rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 720px) {
   .links {
     font-size: .9rem;
   }
+}
+@media (min-width: 1080px) {
+  .links {
+    font-size: 1.2vw;
+  }
+  .left-links{
+    height: 2.2vw;
+  }
+  .center-text-vertically{
+    height: 2.2vw;;
+    line-height: 2.2vw;;
+    text-align: center;
+    /* border: 2px dashed #f69c55; */
+  }
+  
 }
 
 </style>
