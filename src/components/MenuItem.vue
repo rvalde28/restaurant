@@ -15,7 +15,7 @@
           <div class="item-count center-div">
             <div class="input-count-grid">
               <button class="count-button" @click="countSubtract()"> - </button>
-              <div class="count-number">{{ count }}</div>
+              <input class="count-number" type="number"  v-model="count">
               <button class="count-button" @click="countAdd()"> + </button>
             </div>
           </div >
@@ -71,6 +71,16 @@
   text-align: center;
 }
 
+input{
+  border:0;
+  text-align: center;
+}
+
+.center-text {
+  margin: auto;
+  width: 50%;
+}
+
 .center-div{
   display: flex; 
   flex-direction: row; 
@@ -101,6 +111,7 @@
 .input-count-grid{
   display: grid;
   grid-template-columns: 4vw 10vw 4vw;
+  background-color: white;
 }
 .cart-button-div{
   align-content: center;
@@ -124,12 +135,10 @@
 .item-name{
   margin-bottom: .3vh;
   font-size: .9rem;
-  text-align: center;
 }
 
 .item-price{
   font-size: .9rem;
-  text-align: center;
 }
 
 .box {
@@ -154,20 +163,16 @@ img {
 
   .item-name{
     font-size: 5vw;
-    text-align: center;
   }
   .item-price{
     font-size: 4vw;
-    text-align: center;
   }
   .count-button{
     font-size: 4vw;
     font-weight: lighter;
-    text-align: center;
   }
   .count-number{
     font-size: 3.5vw;
-    text-align: center;
   }
   .add-cart{
     font-size: 4.4vw;
@@ -182,20 +187,16 @@ img {
 
   .item-name{
     font-size: 5vw;
-    text-align: center;
   }
   .item-price{
     font-size: 4vw;
-    text-align: center;
   }
   .count-button{
     font-size: 4vw;
     font-weight: lighter;
-    text-align: center;
   }
   .count-number{
     font-size: 3.5vw;
-    text-align: center;
   }
   .add-cart{
     font-size: 4.4vw;
@@ -210,20 +211,16 @@ img {
 
   .item-name{
     font-size: 2.2vw;
-    text-align: center;
   }
   .item-price{
     font-size: 2.3vw;
-    text-align: center;
   }
   .count-button{
     font-size: 2.5vw;
     font-weight: lighter;
-    text-align: center;
   }
   .count-number{
     font-size: 2.5vw;
-    text-align: center;
   }
   .add-cart{
     font-size: 2.4vw;
@@ -241,20 +238,16 @@ img {
 
   .item-name{
     font-size: 1.2vw;
-    text-align: center;
   }
   .item-price{
     font-size: 1.1vw;
-    text-align: center;
   }
   .count-button{
     font-size: 1.2vw;
     font-weight: lighter;
-    text-align: center;
   }
   .count-number{
-    font-size: .9vw;
-    text-align: center;
+    font-size: 1.1vw;
   }
   .add-cart{
     font-size: 1.1vw;
