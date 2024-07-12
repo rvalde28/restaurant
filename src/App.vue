@@ -2,20 +2,20 @@
   <div>
     <button class="shopping-button" @click="expandCart()">Cart</button>
     <NavBar :cartItems="cartItems" />
-    <Menu class="menu-app" @add-to-cart="addToCart" />
-    <Cart :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
+    <MenuComponent class="menu-app" @add-to-cart="addToCart" />
+    <Cart class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
-import Menu from './components/Menu.vue';
+import MenuComponent from './components/MenuComponent.vue';
 import Cart from './components/Cart.vue';
 
 export default {
   components: {
     NavBar,
-    Menu,
+    MenuComponent,
     Cart
   },
   data() {
@@ -56,6 +56,9 @@ export default {
 </script>
 
 <style>
+.cart-bar{
+  z-index: 100001;
+}
 /* .menu-app{
   overflow:scroll;
   height:auto;

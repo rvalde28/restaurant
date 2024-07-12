@@ -135,10 +135,12 @@ input{
 .item-name{
   margin-bottom: .3vh;
   font-size: .9rem;
+  text-align: center;
 }
 
 .item-price{
   font-size: .9rem;
+  text-align: center;
 }
 
 .box {
