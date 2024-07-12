@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar :cartItems="cartItems" />
-    <MenuComponent class="mt-14" @add-to-cart="addToCart" />
+    <MenuComponent class="mt-14 " @add-to-cart="addToCart" />
     <Cart class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
 
     <div class="fixed bottom-4 right-4">
@@ -21,12 +21,14 @@
 import NavBar from './components/NavBar.vue';
 import MenuComponent from './components/MenuComponent.vue';
 import Cart from './components/Cart.vue';
+import PopupWindow from './components/PopupWindow.vue';
 
 export default {
   components: {
     NavBar,
     MenuComponent,
-    Cart
+    Cart,
+    PopupWindow
   },
   data() {
     return {

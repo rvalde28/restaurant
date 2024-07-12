@@ -1,26 +1,26 @@
 <template>
-    <div class="bg-menuCard rounded-lg">
+    <div class="bg-menuCard rounded-lg shadow-hover">
       <div class="rounded-lg">
         <img class="rounded-lg" src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
       </div>
-      <div>
-          <div class="text-white text-center text-xl pt-2">
+      <div class="p-3">
+          <div class="text-white text-left text-xl">
             {{ item.name }}
           </div>
 
-          <div class="text-white text-center text-md pt-2">
+          <div class="text-white text-lg pt-10 pb-2">
               ${{ item.price }}
           </div >
 
-          <div class="flex items-center justify-center py-2">
+          <!-- <div class="flex items-center justify-center py-2">
             <button class="px-4 bg-blue-500 text-white rounded-l" @click="countSubtract()">-</button>
             <input class="text-center w-24 px-2 bg-white border border-gray-300 rounded-none" type="number" v-model="count">
             <button class="px-4 bg-blue-500 text-white rounded-r" @click="countAdd()">+</button>
-          </div>
+          </div> -->
 
-          <div class="cart-button-div py-3">
+          <!-- <div class="cart-button-div py-3">
             <button class="bg-menubtn hover:bg-blue-600 text-white font-bold py-1 px-4 rounded"  @click="addToCart(item)"> Add to Cart </button>
-          </div >
+          </div > -->
       </div>
     </div>
 </template>
@@ -64,6 +64,19 @@
 </script>
   
 <style scoped>
+
+.text-left{
+
+}
+.shadow-hover {
+  transition: box-shadow 0.4s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Default shadow */
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Darker shadow that covers all sides */
+}
+
 /* Hide increment and decrement arrows on number input */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
