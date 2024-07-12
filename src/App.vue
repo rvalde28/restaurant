@@ -2,7 +2,7 @@
   <div>
     <button class="shopping-button" @click="expandCart()">Cart</button>
     <NavBar :cartItems="cartItems" />
-    <MenuComponent @add-to-cart="addToCart" />
+    <MenuComponent class="mt-14" @add-to-cart="addToCart" />
     <Cart class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
   </div>
 </template>

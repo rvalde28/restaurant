@@ -35,129 +35,39 @@ export default {
 </script>
 
 <template>
-    <div class="top-nav" v-if="!useMobileNav" >
-      <div class="left-links">
-         <a class="links active home center-text-vertically" href="#">Home</a>
-      </div>
-      <div class="right-links">
-        <a class="links center-text-vertically" href="#"> Order Online</a>
-        <a class="links center-text-vertically" href="#"> Menu</a>
-        <a class="links center-text-vertically" href="#"> Contact Us</a>
-        <a class="links center-text-vertically" href="#">Login</a>
-      </div>
+  <nav class="bg-white flex justify-between items-center fixed top-0 w-full z-10 shadow-md">
+    <!-- Left-aligned link -->
+    <div>
+      <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Home</a>
     </div>
 
-    <div class="mobile-nav" v-if="useMobileNav" >
-      <a href="#home">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    <!-- Right-aligned links -->
+    <div class="flex items-center">
+      <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Link 1</a>
+      <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Link 2</a>
+      <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Link 3</a>
     </div>
+  </nav>
 </template>
 
 <style scoped>
-a {
-    height: 100%;
-}
-
-.mobile-nav {
-  z-index: 10000;
-  background-color: #333;
-  overflow: none;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Style the links inside the navigation bar */
-.mobile-nav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.top-nav{
-  z-index: 10000;
-  background-color: white;
-  height: 100%;
-  display: flex;
-  position: fixed;
-  top:0;
-  width: 100%;
-  overflow: none;
-  height: auto;
-  color: gray;
-}
-
-.top-nav a.active {
-    border-bottom: 3px solid #57B8FF;
-}
-
-.left-links{
-    flex:1 1 200px;
-}
-
-.links {
-    font-weight: 600;
-    float: left;
-    color: gray;
-    text-align: center;
-    height: 100%;
-    padding-left: 14px;
-    padding-right: 14px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
+/* Custom hover effect for links */
 a:hover {
-    background: #57B8FF;
-    color: white;
-}
-a:selected{
-    background:#cdedfd;
+  background-color: #57B8FF;
+  color: #ffffff; /* Set text color to white on hover */
 }
 
-
-
-@media (min-width: 360px) {
-  home{
-
-  }
-  .links {
-    font-size: .9rem;
-  }
+/* Ensure the link takes up the full height */
+a {
+  display: block;
+  height: 100%;
 }
 
-@media (min-width: 512px) {
-  .links {
-    font-size: .9rem;
-  }
+/* Optionally, adjust text and link alignment */
+a,
+a:hover {
+  text-decoration: none; /* Remove underline on hover */
+  display: flex;
+  align-items: center;
 }
-
-@media (min-width: 720px) {
-  .links {
-    font-size: .9rem;
-  }
-}
-@media (min-width: 1080px) {
-  .links {
-    font-size: 1.2vw;
-  }
-  .left-links{
-    height: 2.9vw;  /* has to be the same as height and line-height in center-text-vertically */
-  }
-  .center-text-vertically{
-    height: 2.9vw;       
-    line-height: 2.9vw;  /* has to be the same as height */
-    text-align: center;
-    /* border: 2px dashed #f69c55; */
-  }
-  
-}
-
 </style>
