@@ -149,11 +149,11 @@ a:selected{
     font-size: 1.2vw;
   }
   .left-links{
-    height: 2.2vw;
+    height: 2.9vw;  /* has to be the same as height and line-height in center-text-vertically */
   }
   .center-text-vertically{
-    height: 2.2vw;;
-    line-height: 2.2vw;;
+    height: 2.9vw;       
+    line-height: 2.9vw;  /* has to be the same as height */
     text-align: center;
     /* border: 2px dashed #f69c55; */
   }

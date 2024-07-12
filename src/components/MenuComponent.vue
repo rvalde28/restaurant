@@ -76,7 +76,7 @@ export default {
 @media (min-width: 1080px) {
   .wrapper {
     margin-top: 1.5vw;
-    top: 2.2vw;;
+    top: 2.9vw;;
     grid-gap: 3vw;
     grid-template-columns: 18vw 18vw 18vw ; /* controls the number of columns */
   }
