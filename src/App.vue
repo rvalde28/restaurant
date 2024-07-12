@@ -1,8 +1,9 @@
 <template>
   <div>
     <NavBar :cartItems="cartItems" />
-    <MenuComponent class="mt-14 " @add-to-cart="addToCart" />
     <Cart class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
+
+    <MenuComponent class="mt-14 z-0" @add-to-cart="addToCart" />
 
     <div class="fixed bottom-4 right-4">
       <button @click="expandCart()" class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full shadow-md">
@@ -19,16 +20,14 @@
 
 <script>
 import NavBar from './components/NavBar.vue';
-import MenuComponent from './components/MenuComponent.vue';
+import MenuComponent from './components/Menu.vue';
 import Cart from './components/Cart.vue';
-import PopupWindow from './components/PopupWindow.vue';
 
 export default {
   components: {
     NavBar,
     MenuComponent,
     Cart,
-    PopupWindow
   },
   data() {
     return {

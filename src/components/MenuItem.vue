@@ -1,5 +1,13 @@
 <template>
-    <div class="bg-menuCard rounded-lg shadow-hover">
+  
+    <PopupWindow :isOpen="isOpen" @close="isOpen = false">
+      <!-- Popup content here -->
+      <h2 class="text-lg font-bold mb-4">Popup Content</h2>
+      <p>This is some content for the popup window.</p>
+    </PopupWindow>
+
+
+    <button @click="isOpen = true" class="bg-menuCard z-0 rounded-lg shadow-hover">
       <div class="rounded-lg">
         <img class="rounded-lg" src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
       </div>
@@ -22,45 +30,51 @@
             <button class="bg-menubtn hover:bg-blue-600 text-white font-bold py-1 px-4 rounded"  @click="addToCart(item)"> Add to Cart </button>
           </div > -->
       </div>
-    </div>
+    </button>
 </template>
 
 <script>
-  const maxOrders = 25
-  export default {
-    props: ['item'],
-    data() {
+import PopupWindow from './PopupWindow.vue';
+
+const maxOrders = 25
+export default {
+  components: {
+    PopupWindow,
+  },
+  props: ['item'],
+  data() {
     return {
       count: 1,
+      isOpen: false
     };
   },
-    methods: {
-      addToCart(item) {
-        let itemInstance={
-        name: item.name,
-        price: item.price,
-        count: this.count,
-        }
-        console.log("called")
-        this.$emit('add-to-cart', itemInstance);
-      },
-      countAdd(){
-        if (this.count >= maxOrders){
-          this.count = maxOrders
-          return
-        }
-        this.count++
-      },
-      countSubtract(){
-        if (this.count <= 1){
-          this.count=1
-          return
-        } else{
-          this.count--
-        }
+  methods: {
+    addToCart(item) {
+      let itemInstance={
+      name: item.name,
+      price: item.price,
+      count: this.count,
+      }
+      console.log("called")
+      this.$emit('add-to-cart', itemInstance);
+    },
+    countAdd(){
+      if (this.count >= maxOrders){
+        this.count = maxOrders
+        return
+      }
+      this.count++
+    },
+    countSubtract(){
+      if (this.count <= 1){
+        this.count=1
+        return
+      } else{
+        this.count--
       }
     }
-  };
+  }
+};
 </script>
   
 <style scoped>
