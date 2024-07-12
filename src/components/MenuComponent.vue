@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper center-div">
+  <div class="grid grid-cols-3 gap-4 wrapper">
     <menu-item v-for="item in menuItems" :key="item.id" :item="item" @add-to-cart="addToCartHandler"></menu-item>
   </div>
 </template>
@@ -58,27 +58,25 @@ export default {
 
 @media (min-width: 360px) {
   .wrapper {
-    grid-template-columns: 75vw; /* controls the number of columns */
+    /* grid-template-columns: 75vw; controls the number of columns */
   }
 }
 
 @media (min-width: 512px) {
   .wrapper {
-    grid-template-columns: 75vw; /* controls the number of columns */
+    /* grid-template-columns: 75vw; controls the number of columns */
   }
 }
 
 @media (min-width: 720px) {
   .wrapper {
-    grid-template-columns: 35vw 35vw; /* controls the number of columns */
+    /* grid-template-columns: 35vw 35vw; controls the number of columns */
   }
 }
 @media (min-width: 1080px) {
   .wrapper {
-    margin-top: 1.5vw;
+    /* margin-top: 1.5vw; */
     top: 2.9vw;;
-    grid-gap: 3vw;
-    grid-template-columns: 18vw 18vw 18vw ; /* controls the number of columns */
   }
 
 }

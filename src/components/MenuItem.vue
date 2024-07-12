@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div>
       <div class="image-div">
         <img src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
       </div>

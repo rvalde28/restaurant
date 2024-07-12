@@ -2,7 +2,7 @@
   <div>
     <button class="shopping-button" @click="expandCart()">Cart</button>
     <NavBar :cartItems="cartItems" />
-    <MenuComponent class="menu-app" @add-to-cart="addToCart" />
+    <MenuComponent @add-to-cart="addToCart" />
     <Cart class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
   </div>
 </template>
@@ -20,12 +20,18 @@ export default {
   },
   data() {
     return {
-      cartItems: []
+      cartItems: [],
+      showCart: false
     };
   },
   methods: {
     expandCart(){
-      document.getElementById("mySideNav").style.width="250px";
+      if (this.showCart == false){
+        document.getElementById("mySideNav").style.width="250px";
+      } else{
+        document.getElementById("mySideNav").style.width="0px";
+      }
+      this.showCart=!this.showCart
     },
     addToCart(item) {
       this.cartItems.push(item); // Add item to cart
@@ -66,7 +72,11 @@ export default {
 } */
 .shopping-button {
   position: fixed;
-  top:50vh;
-  right:.5vw;
+  bottom: 12px;
+  right: 0;
+  border-radius: 50%;
+  display: flex;
+  width: 60px;
+  height: 60px;
 }
 </style>
