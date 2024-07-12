@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-menuCard">
       <div class="image-div">
         <img src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
       </div>
@@ -133,12 +133,16 @@ input{
 }
 
 .item-name{
+  color: white;
+  z-index: 10;
   margin-bottom: .3vh;
   font-size: .9rem;
   text-align: center;
 }
 
 .item-price{
+  color: white;
+  z-index: 10;
   font-size: .9rem;
   text-align: center;
 }

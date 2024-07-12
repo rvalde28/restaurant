@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-3 gap-4 wrapper">
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 wrapper max-w-60 sm:max-w-screen-md xl:max-w-screen-xl">
     <menu-item v-for="item in menuItems" :key="item.id" :item="item" @add-to-cart="addToCartHandler"></menu-item>
   </div>
 </template>
@@ -52,32 +52,7 @@ export default {
     margin-right: auto;
     display: grid;
     grid-gap: 5vw;
-    background-color: #efece6;
+    /* background-color: #efece6; */
     color: #444;
-}
-
-@media (min-width: 360px) {
-  .wrapper {
-    /* grid-template-columns: 75vw; controls the number of columns */
-  }
-}
-
-@media (min-width: 512px) {
-  .wrapper {
-    /* grid-template-columns: 75vw; controls the number of columns */
-  }
-}
-
-@media (min-width: 720px) {
-  .wrapper {
-    /* grid-template-columns: 35vw 35vw; controls the number of columns */
-  }
-}
-@media (min-width: 1080px) {
-  .wrapper {
-    /* margin-top: 1.5vw; */
-    top: 2.9vw;;
-  }
-
 }
 </style>
