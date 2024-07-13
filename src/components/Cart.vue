@@ -1,6 +1,5 @@
 <template>
-
-    <div  class="sidenav">
+    <div class="sidenav">
       <div id="cartBackground" @click="closePopupOnOutsideClick" class="cart-back fixed inset-0 bg-gray-800 opacity-50"></div>
 
       <div class="close-link">
@@ -82,7 +81,7 @@ h3{
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: #111;
   overflow: hidden;
   overflow-y:auto;
