@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="wrapper sm:max-w-screen-md xl:max-w-screen-xl text-h1 py-4">
+    <div class="wrapper border-top-bottom sm:max-w-screen-md xl:max-w-screen-xl text-h1 py-2">
       <span >Food Menu</span>
     </div>
 
@@ -33,28 +33,30 @@
 
 <script>
 import MenuItem from './MenuItem.vue';
+import PopupWindow from './PopupWindow.vue';
 
 export default {
   components: {
-    MenuItem
+    MenuItem,
+    PopupWindow
   },
   data() {
     return {
       plates: [
-        { id: 1, name: 'Carne Guisada Plate', price: 12.75 },
-        { id: 1, name: 'Asado de Puerco Plate', price: 12.75 },
-        { id: 1, name: 'Bistek Ranchero Plate', price: 12.75 },
+        { id: 1, name: 'Carne Guisada Plate', price: 12.75, description: "Beef stew with poblano pepper and vegetables" },
+        { id: 1, name: 'Asado de Puerco Plate', price: 12.75, description: "Pork stew with chile sauce and vegetables" },
+        { id: 1, name: 'Bistek Ranchero Plate', price: 12.75, description: "Beef stew with poblano pepper and vegetables" },
       ],
       tacos: [
-        { id: 3, name: 'Carne Guisada Tacos', price: 7.50 },
-        { id: 3, name: 'Asado de Puerco  Tacos', price: 7.50 },
-        { id: 3, name: 'Bistek Ranchero Tacos', price: 7.50 },
+        { id: 3, name: 'Carne Guisada Tacos', price: 7.50, description: "Beef stew with poblano pepper and vegetables in a taco" },
+        { id: 3, name: 'Asado de Puerco  Tacos', price: 7.50, description: "Beef stew with poblano pepper and vegetables in a taco" },
+        { id: 3, name: 'Bistek Ranchero Tacos', price: 7.50, description: "Beef stew with poblano pepper and vegetables in a taco" },
       ],
       tamales: [
-        { id: 2, name: 'Chicken Tamales', price: 15.75 },
-        { id: 3, name: 'Pork Tamales', price: 7.5+0 },
-        { id: 1, name: 'Bean Tamales', price: 10.75 },
-        { id: 1, name: 'Cheese Tamales', price: 10.75 },
+        { id: 2, name: 'Chicken Tamales', price: 15.75, description: "Authentic Chicken Mexican Tamale" },
+        { id: 3, name: 'Pork Tamales', price: 7.50, description: "Authentic Pork Mexican Tamale" },
+        { id: 1, name: 'Bean Tamales', price: 10.75, description: "Authentic Bean Mexican Tamale" },
+        { id: 1, name: 'Cheese Tamales', price: 10.75 , description: "Authentic Cheese Mexican Tamale"},
       ]
     };
   },
@@ -67,6 +69,11 @@ export default {
 </script>
 
 <style scoped>
+.border-top-bottom{
+  border-top: 3px solid #57B8FF;
+  border-bottom: 3px solid #57B8FF;  
+}
+
 .text-h1{
   font-size: 2rem;
   font-weight: 450;
@@ -91,11 +98,9 @@ export default {
 }
 
 .wrapper {
-    position: relative;
     /* margin: 2rem; */
     margin-left: auto;
     margin-right: auto;
-    display: grid;
     /* grid-gap: 5vw; */
     /* background-color: #efece6; */
     color: #444;

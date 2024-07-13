@@ -1,22 +1,22 @@
 <template>
   
-    <PopupWindow :isOpen="isOpen" @close="isOpen = false">
+    <PopupWindow class="top-0 left-0 z-[1000]" :isOpen="isOpen" @close="isOpen = false">
       <!-- Popup content here -->
       <h2 class="text-lg font-bold mb-4">Popup Content</h2>
-      <p>This is some content for the popup window.</p>
+      <p>{{ item.description }}</p>
     </PopupWindow>
 
 
-    <button @click="isOpen = true" class="bg-menuCard z-0 rounded-lg shadow-hover">
+    <button @click="isOpen = true" class="bg-white z-0 rounded-lg shadow-hover">
       <div class="rounded-lg">
         <img class="rounded-lg" src="../assets/images/YH_May23_Chicken_Nachos.jpg" ref="nachos">
       </div>
       <div class="p-3">
-          <div class="text-white text-left text-xl">
+          <div class="text-menuCard text-left text-xl pb-2">
             {{ item.name }}
           </div>
-
-          <div class="text-white text-lg pt-10 pb-2">
+          <div class="line"></div>
+          <div class="text-menuCard text-left text-lg pt-8 pb-2">
               ${{ item.price }}
           </div >
 
@@ -78,6 +78,15 @@ export default {
 </script>
   
 <style scoped>
+
+
+
+.line {
+  bottom: 0;
+  left: 50%;
+  height: 1.75px;
+  background-color: #DEC5E3;
+}
 
 .text-left{
 

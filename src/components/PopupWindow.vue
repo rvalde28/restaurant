@@ -1,10 +1,9 @@
 <template>
-
   <transition name="popup-slide">
-    <div v-if="isOpen" class="fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center">
-      <div id="windowBackground" v-if="isOpen" class="bg-gray-800 bg-opacity-50 fixed top-0 right-0 bottom-0 left-0" @click="closePopupOnOutsideClick"></div> <!-- Background overlay -->
+    <div v-if="isOpen" class="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0">
+      <div id="windowBackground" class="bg-gray-800 bg-opacity-50 absolute top-0 right-0 bottom-0 left-0" @click="closePopupOnOutsideClick"></div> <!-- Background overlay -->
 
-      <div class="right-space max-w-sm w-full md:w-3/4 lg:w-2/3 xl:w-1/3 bg-white shadow-lg rounded-lg p-4 transform translate-x-full md:translate-x-0 absolute top-1/2 transform -translate-y-1/2">
+      <div class="max-w-sm w-full md:w-3/4 lg:w-2/3 xl:w-1/3 bg-white shadow-lg rounded-lg p-4 transform translate-x-full md:translate-x-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <!-- Close button -->
         <button @click="closePopup" class="absolute top-0 right-0 p-2 m-4 text-gray-600 hover:text-gray-800">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +19,6 @@
     </div>
   </transition>
 </template>
-
 <script>
 export default {
   name: 'PopupWindow',
@@ -57,5 +55,11 @@ export default {
 }
 .popup-slide-enter-from, .popup-slide-leave-to {
   transform: translateX(100%);
+}
+/* Centering adjustments for small screens */
+@media (max-width: 770px) {
+  .max-w-sm {
+    width: 80%; /* Adjust the width as needed */
+  }
 }
 </style>
