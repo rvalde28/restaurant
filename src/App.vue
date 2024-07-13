@@ -1,10 +1,10 @@
 <template>
   <div>
     <NavBar :cartItems="cartItems" />
-    <Cart class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
+    <Cart id="mySideNav" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
 
-    <MenuComponent class="mt-14 z-0" @add-to-cart="addToCart" />
-
+    <Menu @expand-cart="expandCart" class="mt-14 z-0" @add-to-cart="addToCart" />
+    <div class=" z-[1000]">{{ showCart }}</div>
     <div class="fixed bottom-4 right-4">
       <button @click="expandCart()" class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -20,13 +20,13 @@
 
 <script>
 import NavBar from './components/NavBar.vue';
-import MenuComponent from './components/Menu.vue';
+import Menu from './components/Menu.vue';
 import Cart from './components/Cart.vue';
 
 export default {
   components: {
     NavBar,
-    MenuComponent,
+    Menu,
     Cart,
   },
   data() {
@@ -36,13 +36,14 @@ export default {
     };
   },
   methods: {
+
     expandCart(){
       if (this.showCart == false){
         document.getElementById("mySideNav").style.width="250px";
       } else{
         document.getElementById("mySideNav").style.width="0px";
       }
-      this.showCart=!this.showCart
+      this.showCart=!this.showCart    
     },
     addToCart(item) {
       this.cartItems.push(item); // Add item to cart

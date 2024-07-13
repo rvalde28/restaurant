@@ -1,5 +1,5 @@
 <template>
-    <div id="mySideNav" class="sidenav">
+    <div  class="sidenav">
       <div class="close-link">
         <a href="javascript:void(0)" @click="closeNav()">&times;</a>
       </div>
@@ -31,10 +31,11 @@
 
 <script>
 export default {
-  props: ['cartItems'],
+  props: ['cartItems',],
   methods: {
     closeNav(){
       document.getElementById("mySideNav").style.width="0";
+      this.$emit('expand-cart')
     },
     removeItem(index) {
       this.$emit('remove-item', index); // Emit event to remove item from cart

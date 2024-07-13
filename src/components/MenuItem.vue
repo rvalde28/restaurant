@@ -66,6 +66,7 @@ export default {
       }
       console.log("called")
       this.$emit('add-to-cart', itemInstance);
+      this.$emit('expand-cart')
       this.count=1
       this.isOpen = false;
     },
