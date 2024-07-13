@@ -1,9 +1,11 @@
 <template>
+
     <div  class="sidenav">
+      <div id="cartBackground" @click="closePopupOnOutsideClick" class="cart-back fixed inset-0 bg-gray-800 opacity-50"></div>
+
       <div class="close-link">
         <a href="javascript:void(0)" @click="closeNav()">&times;</a>
-      </div>
-      
+      </div>      
       <h3>Shopping Cart</h3>
       <div v-for="(item, index) in cartItems" :key="index">
           <div>
@@ -33,6 +35,13 @@
 export default {
   props: ['cartItems',],
   methods: {
+    closePopupOnOutsideClick(event) {
+      console.log("outside click")
+       // Check if the click target is the background overlay or element with id "windowBackground"
+       if (event.target.id === 'cartBackground') {
+        this.$emit('expand-cart')
+      } 
+    },
     closeNav(){
       document.getElementById("mySideNav").style.width="0";
       this.$emit('expand-cart')
@@ -51,6 +60,11 @@ export default {
 </script>
   
 <style>
+.cart-back{
+  display:none;
+  z-index: -1;
+}
+
 .close-link{
   padding-top: 15px;
 }

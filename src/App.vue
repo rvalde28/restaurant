@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar :cartItems="cartItems" />
-    <Cart id="mySideNav" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
+    <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
 
     <Menu @expand-cart="expandCart" class="mt-14 z-0" @add-to-cart="addToCart" />
     <div class=" z-[1000]">{{ showCart }}</div>
@@ -40,8 +40,10 @@ export default {
     expandCart(){
       if (this.showCart == false){
         document.getElementById("mySideNav").style.width="250px";
+        document.getElementById("cartBackground").style.display="block";
       } else{
         document.getElementById("mySideNav").style.width="0px";
+        document.getElementById("cartBackground").style.display="none";
       }
       this.showCart=!this.showCart    
     },
