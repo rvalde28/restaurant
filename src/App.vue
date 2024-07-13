@@ -1,18 +1,12 @@
 <template>
   <div>
-    <NavBar :cartItems="cartItems" />
+    <NavBar @expand-cart="expandCart" :cartItems="cartItems" />
+
     <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
+    <!-- <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
 
     <Menu @expand-cart="expandCart" class="mt-14 z-0" @add-to-cart="addToCart" />
     <div class=" z-[1000]">{{ showCart }}</div>
-    <div class="fixed bottom-4 right-4">
-      <button @click="expandCart()" class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full shadow-md">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-        </svg>
-        <span class="ml-1">{{ cartItems.length }}</span>
-      </button>
-    </div>
   </div>
 </template>
 
@@ -76,7 +70,7 @@ export default {
 
 <style>
 .cart-bar{
-  z-index: 100001;
+  z-index: 100;
 }
 /* .menu-app{
   overflow:scroll;

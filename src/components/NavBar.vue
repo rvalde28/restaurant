@@ -1,38 +1,3 @@
-<script>
-// import { ref, onMounted } from 'vue'
-
-export default {
-  data() {
-    return {
-      useMobileNav: false,
-      windowWidth: window.innerWidth
-    }
-  },
-  methods: {
-    onResize() {
-      this.windowWidth = window.innerWidth
-    }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      if (this.windowWidth < 800){
-        this.useMobileNav=true
-      } else{
-        this.useMobileNav = false
-      }
-      window.addEventListener('resize', this.onResize);
-    })
-  },
-
-  beforeUnmount() { 
-    window.removeEventListener('resize', this.onResize); 
-  },
-  // created() {
-  //   window.addEventListener("resize", this.)
-  // }
-};
-
-</script>
 
 <template>
   <nav class="bg-white flex justify-between items-center fixed top-0 w-full z-10 shadow-md">
@@ -46,9 +11,56 @@ export default {
       <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Link 1</a>
       <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Link 2</a>
       <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Link 3</a>
+    
+      <button @click="expandCart" class="bg-blue-500 text-white px-3 py-2 rounded-full hover:bg-blue-400 flex items-center mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+        </svg>
+        <div>{{ cartItems.length }}</div>
+      </button>
     </div>
   </nav>
 </template>
+
+<script>
+// import { ref, onMounted } from 'vue'
+
+export default {
+  props:["cartItems"],
+  data() {
+    return {
+      useMobileNav: false,
+      windowWidth: window.innerWidth
+    }
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth
+    },
+    expandCart() { 
+      this.$emit("expand-cart")
+    },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      if (this.windowWidth < 800){
+        this.useMobileNav=true
+      } else{
+        this.useMobileNav = false
+      }
+      window.addEventListener('resize', this.onResize);
+    })
+  },
+  beforeUnmount() { 
+    window.removeEventListener('resize', this.onResize); 
+  },
+  // created() {
+  //   window.addEventListener("resize", this.)
+  // }
+};
+
+</script>
+
 
 <style scoped>
 /* Custom hover effect for links */

@@ -3,7 +3,7 @@
     <div v-if="isOpen" class="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0">
       <div id="windowBackground" class="bg-gray-800 bg-opacity-25 absolute top-0 right-0 bottom-0 left-0" @click="closePopupOnOutsideClick"></div> <!-- Background overlay -->
 
-      <div class="max-w-sm sm:max-w-lg lg:max-w-2xl w-full md:w-3/4 lg:w-2/3 xl:w-1/3 bg-white shadow-lg rounded-lg transform translate-x-full xl:translate-x-0 absolute top-1/3 left-1/2 xl:custom-left-three-fifths transform -translate-x-1/2 -translate-y-1/2">
+      <div class="max-w-sm sm:max-w-lg lg:max-w-2xl w-full md:w-3/4 lg:w-2/3 xl:w-1/3 bg-white shadow-lg rounded-lg transform translate-x-full md:translate-x-0 absolute top-1/3 left-1/2 xl:custom-left-three-fifths transform -translate-x-1/2 -translate-y-1/2">
         <!-- Close button -->
         <button @click="closePopup" class="z-[1001] absolute top-0 right-0 p-2 m-2 text-gray-600 hover:text-gray-800 bg-white rounded-full shadow-md">
           <svg class="w-6 h-6 text-gray-600 hover:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
