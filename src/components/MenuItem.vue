@@ -2,8 +2,24 @@
   
     <PopupWindow class="top-0 left-0 z-[1000]" :isOpen="isOpen" @close="isOpen = false">
       <!-- Popup content here -->
-      <h2 class="text-lg font-bold mb-4">Popup Content</h2>
-      <p>{{ item.description }}</p>
+      <img class="p-0 rounded-t-lg" :src="item.imagePath">
+      <h2 class="text-lg font-bold pt-4 pr-4 pl-4 pb-1">{{ item.name }}</h2>
+      <p class="pt-1 pr-4 pl-4 pb-2">{{ item.description }}</p>
+
+      <div class="rounded-b-lg overflow-hidden border-t box-cart-shadow">
+        <!-- Header with buttons -->
+        <div class="flex justify-between items-center bg-white px-4 py-2 border-b">
+          <!-- Left buttons -->
+          <div class="flex">
+            <button class="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600">-</button>
+            <div class="flex text-center w-12 pr-2 pl-2 bg-white rounded-none items-center justify-center" type="number">{{ count }}</div>
+            <button class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600">+</button>
+          </div>
+          <!-- Right button -->
+          <button class="p-2 w-36 lg:w-48 rounded-full bg-gray-500 text-white hover:bg-gray-600">Button 3</button>
+        </div>
+
+      </div>
     </PopupWindow>
 
 
@@ -79,7 +95,9 @@ export default {
   
 <style scoped>
 
-
+.box-cart-shadow{
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, .11);
+}
 
 .line {
   bottom: 0;

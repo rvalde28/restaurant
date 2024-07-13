@@ -1,18 +1,18 @@
 <template>
   <transition name="popup-slide">
     <div v-if="isOpen" class="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0">
-      <div id="windowBackground" class="bg-gray-800 bg-opacity-50 absolute top-0 right-0 bottom-0 left-0" @click="closePopupOnOutsideClick"></div> <!-- Background overlay -->
+      <div id="windowBackground" class="bg-gray-800 bg-opacity-25 absolute top-0 right-0 bottom-0 left-0" @click="closePopupOnOutsideClick"></div> <!-- Background overlay -->
 
-      <div class="max-w-sm w-full md:w-3/4 lg:w-2/3 xl:w-1/3 bg-white shadow-lg rounded-lg p-4 transform translate-x-full md:translate-x-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div class="max-w-sm sm:max-w-lg lg:max-w-2xl w-full md:w-3/4 lg:w-2/3 xl:w-1/3 bg-white shadow-lg rounded-lg transform translate-x-full xl:translate-x-0 absolute top-1/3 left-1/2 xl:custom-left-three-fifths transform -translate-x-1/2 -translate-y-1/2">
         <!-- Close button -->
-        <button @click="closePopup" class="absolute top-0 right-0 p-2 m-4 text-gray-600 hover:text-gray-800">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <button @click="closePopup" class="z-[1001] absolute top-0 right-0 p-2 m-2 text-gray-600 hover:text-gray-800 bg-white rounded-full shadow-md">
+          <svg class="w-6 h-6 text-gray-600 hover:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
 
         <!-- Popup content -->
-        <div class="py-2">
+        <div class="">
           <slot></slot>
         </div>
       </div>
@@ -44,12 +44,9 @@ export default {
 </script>
 
 <style scoped>
-.right-space{
-  z-index: 1000000000000000; /* Adjust the value as needed */
-  right: 10vw;
-  top: 30vh;
+.custom-left-three-fifths{
+  left: 60%;
 }
-
 .popup-slide-enter-active, .popup-slide-leave-active {
   transition: transform 0.3s ease;
 }
