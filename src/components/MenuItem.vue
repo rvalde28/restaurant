@@ -11,12 +11,15 @@
         <div class="flex justify-between items-center bg-white px-4 py-2 border-b">
           <!-- Left buttons -->
           <div class="flex">
-            <button class="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600">-</button>
-            <div class="flex text-center w-12 pr-2 pl-2 bg-white rounded-none items-center justify-center" type="number">{{ count }}</div>
-            <button class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600">+</button>
+            <button @click="countSubtract()" class="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600">-</button>
+            <div class="flex text-center w-12 pr-2 pl-2 bg-white rounded-none items-center justify-center"> {{ count  }} </div>
+            <button @click="countAdd()" class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600">+</button>
           </div>
           <!-- Right button -->
-          <button class="p-2 w-36 lg:w-48 rounded-full bg-gray-500 text-white hover:bg-gray-600">Button 3</button>
+          <button @click="addToCart(item)"   class="flex items-center justify-between p-2 w-36 lg:w-48 rounded-full bg-gray-500 text-white hover:bg-gray-600">
+              <div class="pl-3"> Add to Cart </div>
+              <div class="pr-3">${{ count * item.price }}</div>
+          </button>
         </div>
 
       </div>
@@ -35,16 +38,6 @@
           <div class="text-menuCard text-left text-lg pt-8 pb-2">
               ${{ item.price }}
           </div >
-
-          <!-- <div class="flex items-center justify-center py-2">
-            <button class="px-4 bg-blue-500 text-white rounded-l" @click="countSubtract()">-</button>
-            <input class="text-center w-24 px-2 bg-white border border-gray-300 rounded-none" type="number" v-model="count">
-            <button class="px-4 bg-blue-500 text-white rounded-r" @click="countAdd()">+</button>
-          </div> -->
-
-          <!-- <div class="cart-button-div py-3">
-            <button class="bg-menubtn hover:bg-blue-600 text-white font-bold py-1 px-4 rounded"  @click="addToCart(item)"> Add to Cart </button>
-          </div > -->
       </div>
     </button>
 </template>
@@ -73,6 +66,8 @@ export default {
       }
       console.log("called")
       this.$emit('add-to-cart', itemInstance);
+      this.count=1
+      this.isOpen = false;
     },
     countAdd(){
       if (this.count >= maxOrders){
