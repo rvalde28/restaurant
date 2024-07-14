@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar @expand-cart="expandCart" :cartItems="cartItems" />
+    <NavBar @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
 
     <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
     <!-- <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->

@@ -1,84 +1,61 @@
 <template>
-    <div class="sidenav">
-      <div id="cartBackground" @click="closePopupOnOutsideClick" class="cart-back fixed inset-0 bg-gray-800 opacity-0"></div>
-      
-      <div class="pl-5 h-72 bg-white text-black">
+  <div>
+    <div v-if="isOpen" id="cartBackground" @click="closePopupOnOutsideClick" class="fixed top-0 right-0 bottom-0 left-0 z-10 bg-gray-800 bg-opacity-0"></div>
+    <transition name="slide-down">
+      <div  v-if="isOpen" class="z-[11] bg-white border rounded-lg shadow-lg absolute mt-2 top-full right-0 w-64">
         <div class="close-link">
           <a href="javascript:void(0)" @click="closeNav()">&times;</a>
-        </div>      
-        <h3>Shopping Cart</h3>
-        <div v-for="(item, index) in cartItems" :key="index">
-            <div>
-              {{ item.name }}
-            </div>
+        </div>  
 
-            <div>
-              ({{ item.count }}) x $ {{ item.price }} =  ${{ item.count * item.price}}
-            </div>
-            
-            <button @click="removeItem(index)">Remove</button>
+
+        <!-- Cart content here -->
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-4">Your Cart</h3>
+          <!-- Display cart items here -->
+          <ul>
+            <li v-for="(item, index) in cartItems" :key="index">
+              {{ item.name }} - ${{ item.price }}
+            </li>
+          </ul>
+          <!-- Example of total price calculation -->
+          <div class="mt-4">
+            Total: ${{ getTotalPrice() }}
+          </div>
+          <button @click="clearCart">Clear Cart</button>
         </div>
-        <p>Total: ${{ getTotal() }}</p>
-        <button @click="clearCart">Clear Cart</button>
       </div>
-    </div>
+    </transition>
+    
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['cartItems',],
+  props: ['cartItems', 'isOpen'],
   methods: {
     closePopupOnOutsideClick(event) {
       console.log("outside click")
        // Check if the click target is the background overlay or element with id "windowBackground"
       if (event.target.id === 'cartBackground') {
-        this.$emit('expand-cart')
+        this.$emit('toggleCart')
       } 
     },
     closeNav(){
-      document.getElementById("mySideNav").style.width="0";
-      this.$emit('expand-cart')
+      this.$emit('toggleCart')
     },
     removeItem(index) {
       this.$emit('remove-item', index); // Emit event to remove item from cart
     },
-    getTotal() {
-      return this.cartItems.reduce((total, item) => total + (item.price * item.count), 0).toFixed(2);
-    },
     clearCart() {
       this.$emit('clear-cart'); // Emit event to clear the cart
+    },
+    getTotalPrice() {
+      return this.cartItems.reduce((acc, item) => acc + item.price, 0);
     }
   }
 };
 </script>
-  
-<style>
-.cart-back{
-  display:none;
-  z-index: -1;
-}
 
-.close-link{
-  padding-top: 15px;
-}
+<style scoped>
 
-h3{
-  margin:0;
-}
-
-.sidenav{
-  bottom:0;
-  justify-content: center;
-  color:white;
-  height: 100%;
-  width:0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  overflow: hidden;
-  overflow-y:auto;
-  transition: 0.5s;
-}
 </style>
