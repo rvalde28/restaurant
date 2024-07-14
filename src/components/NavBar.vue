@@ -19,7 +19,7 @@
       </button>
 
       <!-- Include Cart component -->
-      <Cart @clear-cart="clearCart" @toggle-cart="toggleCart" :cartItems="cartItems" :is-open="isCartOpen" />
+      <Cart id="mySideNav" @clear-cart="clearCart" @toggle-cart="toggleCart" :cartItems="cartItems" :show-cart="showCart" :is-open="isCartOpen" />
 
     </div>
   </nav>
@@ -32,12 +32,12 @@ export default {
   components: {
     Cart
   },
-  props: ["cartItems"],
+  props: ["cartItems", "showCart"],
   data() {
     return {
       useMobileNav: false,
       windowWidth: window.innerWidth,
-      isCartOpen: false
+      isCartOpen: false,
     }
   },
   methods: {
@@ -45,7 +45,8 @@ export default {
       this.windowWidth = window.innerWidth
     },
     toggleCart() {
-      this.isCartOpen = !this.isCartOpen;
+      this.isCartOpen = false
+      this.$emit('expand-cart')
     },
     clearCart(){
       this.$emit('clear-cart')

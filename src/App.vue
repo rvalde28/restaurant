@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NavBar @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
+    <NavBar :show-cart="showCart" @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
 
-    <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" />
+    <!-- <Cart :show-cart="showCart" id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
     <!-- <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
 
     <Menu @expand-cart="expandCart" class="mt-14 z-0" @add-to-cart="addToCart" />
@@ -29,15 +29,7 @@ export default {
     };
   },
   methods: {
-
     expandCart(){
-      if (this.showCart == false){
-        document.getElementById("mySideNav").style.width="250px";
-        document.getElementById("cartBackground").style.display="block";
-      } else{
-        document.getElementById("mySideNav").style.width="0px";
-        document.getElementById("cartBackground").style.display="none";
-      }
       this.showCart=!this.showCart    
     },
     addToCart(item) {

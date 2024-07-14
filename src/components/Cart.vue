@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div v-if="isOpen" id="cartBackground" @click="closePopupOnOutsideClick" class="fixed top-0 right-0 bottom-0 left-0 z-10 bg-gray-800 bg-opacity-0"></div>
+    <div v-if="isOpen || showCart" id="cartBackground" @click="closePopupOnOutsideClick" class="fixed top-0 right-0 bottom-0 left-0 z-10 bg-gray-800 bg-opacity-50"></div>
     <transition name="slide-down">
-      <div  v-if="isOpen" class="z-[11] bg-white border rounded-lg shadow-lg absolute mt-2 top-full right-0 w-64">
+      <div  v-if="isOpen || showCart" class="z-[11] bg-white border rounded-lg shadow-lg absolute mt-2 top-full right-0 w-64">
         <div class="close-link">
           <a href="javascript:void(0)" @click="closeNav()">&times;</a>
         </div>  
-
 
         <!-- Cart content here -->
         <div class="p-4">
@@ -31,7 +30,7 @@
 
 <script>
 export default {
-  props: ['cartItems', 'isOpen'],
+  props: ['cartItems', 'isOpen', 'showCart'],
   methods: {
     closePopupOnOutsideClick(event) {
       console.log("outside click")
