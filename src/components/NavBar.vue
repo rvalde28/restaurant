@@ -19,7 +19,7 @@
       </button>
 
       <!-- Include Cart component -->
-      <Cart id="mySideNav" @clear-cart="clearCart" @toggle-cart="toggleCart" :cartItems="cartItems" :show-cart="showCart" :is-open="isCartOpen" />
+      <Cart @remove-item="removeItem" id="mySideNav" @clear-cart="clearCart" @toggle-cart="toggleCart" :cartItems="cartItems" :show-cart="showCart" :is-open="isCartOpen" />
 
     </div>
   </nav>
@@ -50,7 +50,10 @@ export default {
     },
     clearCart(){
       this.$emit('clear-cart')
-    }
+    },
+    removeItem(index) {
+      this.$emit('remove-item', index); // Emit event to remove item from cart
+    },
   },
   mounted() {
     this.$nextTick(() => {

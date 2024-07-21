@@ -6,9 +6,12 @@ export default {
     extend: {
       colors: {
         'primary': '#57B8FF',
-        'secondary': '#ffed4a',
+        'secondary': '#b992c1',
+        'third': '#B6DCFE',
+        'fourth':'#dec5e3',
         'menuCard': '#444',
         'menubtn': '#57B8FF'
+
       },
     },
   },
