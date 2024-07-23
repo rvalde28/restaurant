@@ -35,7 +35,7 @@
           </div> -->
 
           <!-- <button @click="clearCart" class="bg-blue-500 text-white px-3 py-2 rounded-full hover:bg-blue-400 flex items-center mb-4 relative">Clear Cart</button> -->
-          <button @click="clearCart" class="bg-blue-500 w-11/12 text-white ml-4 mr-4 px-3 py-2 rounded-full hover:bg-blue-400 flex items-center mb-4 relative">
+          <button @click="navigateCheckout" class="bg-blue-500 w-11/12 text-white ml-4 mr-4 px-3 py-2 rounded-full hover:bg-blue-400 flex items-center mb-4 relative">
             <div class="pl-3 text-lg"> <!-- Use flex-grow to make this div take remaining space -->
               Checkout
             </div>
@@ -54,6 +54,9 @@
 export default {
   props: ['cartItems', 'isOpen', 'showCart'],
   methods: {
+    navigateCheckout() {
+      this.$router.push('/checkout');
+    },
     closePopupOnOutsideClick(event) {
       console.log("outside click")
        // Check if the click target is the background overlay or element with id "windowBackground"

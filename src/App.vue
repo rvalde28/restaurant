@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-view />
     <NavBar @remove-item="removeItem" :show-cart="showCart" @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
 
     <!-- <Cart :show-cart="showCart" id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
