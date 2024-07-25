@@ -56,6 +56,7 @@ export default {
   methods: {
     navigateCheckout() {
       this.$router.push('/checkout');
+      this.$emit('toggleCart')
     },
     closePopupOnOutsideClick(event) {
       console.log("outside click")

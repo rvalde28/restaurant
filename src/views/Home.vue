@@ -1,22 +1,25 @@
 <template>
-  <div id="app">
-    <NavBar @remove-item="removeItem" :show-cart="showCart" @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
+  <div>
+    <!-- <router-view /> -->
+    <!-- <NavBar @remove-item="removeItem" :show-cart="showCart" @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" /> -->
 
-    <router-link to="/checkout">About</router-link>
+    <!-- <Cart :show-cart="showCart" id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
+    <!-- <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
 
-    <router-view></router-view>
+    <Menu @expand-cart="expandCart" class="mt-14 z-0" @add-to-cart="addToCart" />
+    <div class=" z-[1000]">{{ showCart }}</div>
   </div>
 </template>
 
 
-
 <script>
-import NavBar from './components/NavBar.vue';
+import NavBar from '../components/NavBar.vue';
+import Menu from '../components/Menu.vue';
 
 export default {
-  name: "app",
   components: {
     NavBar,
+    Menu
   },
   data() {
     return {

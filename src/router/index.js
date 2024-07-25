@@ -1,16 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import App from '../App.vue';  // Replace with your component
-import Checkout from '../components/Checkout.vue'; // Replace with your component
+import Home from '../views/Home.vue';
+import Checkout from '../views/Checkout.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: App
+    component: Home
   },
   {
     path: '/checkout',
-    name: 'Checkout',
     component: Checkout
   }
 ];

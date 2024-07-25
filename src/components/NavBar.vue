@@ -2,7 +2,9 @@
   <nav class="bg-white flex justify-between items-center fixed top-0 w-full z-10 shadow-md">
     <!-- Left-aligned link -->
     <div>
-      <a href="#" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Home</a>
+      <a href="/" @click="navigateHome" class="text-gray-800 px-3 py-2 text-lg hover:bg-customBlue hover:text-white transition-colors duration-300 flex items-center">Home</a>
+      
+
     </div>
 
     <!-- Right-aligned links -->
@@ -41,6 +43,9 @@ export default {
     }
   },
   methods: {
+    navigateHome() {
+      this.$router.push('/');
+    },
     onResize() {
       this.windowWidth = window.innerWidth
     },
