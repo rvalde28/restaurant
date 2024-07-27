@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-12 z-0">
       <h1>About Page</h1>
       <button @click="navigateToHome">Go to Home Page</button>
 

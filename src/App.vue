@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <NavBar @remove-item="removeItem" :show-cart="showCart" @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
-
-    <router-link to="/checkout">About</router-link>
-
     <router-view></router-view>
   </div>
 </template>
