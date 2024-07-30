@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "square": "^37.1.1",
+    "@stripe/stripe-js": "^4.1.0",
     "vue": "^3.4.29",
     "vue-router": "^4.0.13"
   },
