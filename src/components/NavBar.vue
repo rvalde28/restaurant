@@ -32,6 +32,7 @@ import Cart from './Cart.vue';
 import { globalState } from '../globalstate.js';
 
 export default {
+  props: ["showCart"],
   components: {
     Cart
   },
@@ -53,7 +54,6 @@ export default {
       removeItem
     };
   },
-  props: ["showCart"],
   data() {
     return {
       useMobileNav: false,
