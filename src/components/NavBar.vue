@@ -71,13 +71,7 @@ export default {
     toggleCart() {
       this.isCartOpen = false
       this.$emit('expand-cart')
-    },
-    // clearCart(){
-    //   this.$emit('clear-cart')
-    // },
-    // removeItem(index) {
-    //   this.$emit('remove-item', index); // Emit event to remove item from cart
-    // },
+    }
   },
   mounted() {
     this.$nextTick(() => {
