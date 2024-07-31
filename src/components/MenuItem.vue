@@ -16,9 +16,9 @@
             <button @click="countAdd()" class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600">+</button>
           </div>
           <!-- Right button -->
-          <button @click="addToCart(item)"   class="flex items-center justify-between p-2 w-36 lg:w-48 rounded-full bg-gray-500 text-white hover:bg-gray-600">
-              <div class="pl-3"> Add to Cart </div>
-              <div class="pr-3">${{ count * item.price }}</div>
+          <button @click="addToCart(item)"   class="flex items-center justify-around p-2 w-36 lg:w-48 rounded-full bg-gray-500 text-white hover:bg-gray-600">
+              <div class=""> Add to Cart </div>
+              <div class="">${{ count * item.price }}</div>
           </button>
         </div>
 
