@@ -12,7 +12,16 @@ import (
 )
 
 type config struct {
-	Key string `env:"stripe_key"`
+	Key       string `env:"stripe_key"`
+	DomainURL string `env:"domainUrl" envDefault:"localhost"`
+	Port      string `env:"port" envDefault:"4242"`
+	HostUrl   string `env:"hostUrl" envDefault:"http://localhost:4242"`
+}
+
+type StripeBody struct {
+	FoodName   string `json: "foodName"`
+	Qty        int64  `json: "qty"`
+	CouponCode string `json: "couponCode"`
 }
 
 func main() {
@@ -26,15 +35,9 @@ func main() {
 
 	http.Handle("/", http.FileServer(http.Dir("public")))
 	http.HandleFunc("/create-checkout-session", createCheckoutSession)
-	addr := "localhost:4242"
+	addr := cfg.DomainURL + ":" + cfg.Port
 	log.Printf("Listening on %s", addr)
 	log.Fatal(http.ListenAndServe(addr, nil))
-}
-
-type StripeBody struct {
-	FoodName   string `json::foodName`
-	Qty        int64  `json::qty`
-	CouponCode string `json::couponCode`
 }
 
 // example request
@@ -42,6 +45,11 @@ type StripeBody struct {
 func createCheckoutSession(w http.ResponseWriter, r *http.Request) {
 	var items []StripeBody
 	json.NewDecoder(r.Body).Decode(&items)
+
+	cfg := config{}
+	if err := env.Parse(&cfg); err != nil {
+		fmt.Printf("%+v\n", err)
+	}
 
 	foods := map[string]string{
 		"Bistek Ranchero Plate":     "price_1Piqw0GyTtiKluPRcBx9RlBp",
@@ -71,7 +79,7 @@ func createCheckoutSession(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("items-list-count: ", len(checkoutItems))
 
-	domain := "http://localhost:4242"
+	domain := cfg.HostUrl
 	params := &stripe.CheckoutSessionParams{
 		LineItems:                checkoutItems,
 		AllowPromotionCodes:      stripe.Bool(true),
