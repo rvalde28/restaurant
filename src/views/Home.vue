@@ -6,7 +6,7 @@
     <!-- <Cart :show-cart="showCart" id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" @expand-cart="expandCart" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
     <!-- <Cart id="mySideNav" @click="closePopupOnOutsideClick" class="cart-bar" :cart-items="cartItems" @remove-item="removeItem" @clear-cart="clearCart" /> -->
 
-    <Menu @expand-cart="expandCart" class="mt-14 z-0" @add-to-cart="addToCart" />
+    <Menu @expand-cart="expandCart" class="md:mt-14 z-0" @add-to-cart="addToCart" />
     <div class=" z-[1000]">{{ showCart }}</div>
   </div>
 </template>

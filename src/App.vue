@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar @remove-item="removeItem" :show-cart="showCart" @expand-cart="expandCart" :cartItems="cartItems"  @clear-cart="clearCart" />
-    <div class="mt-12">
+    <div class="md:mt-12">
       <router-view></router-view>
     </div>
   </div>
