@@ -39,19 +39,21 @@
   </nav>
 
   <!-- Mobile Nav -->
-  <nav class="btm-nav md:hidden z-[1000]">
-    <a href="/" @click="navigateHome" class="text-info active text-xl">
-      <AnOutlinedHome/>
+  <nav class="btm-nav md:hidden z-[1000] rounded-t-3xl bg-blue-500">
+    <a href="/" @click="navigateHome" class="text-white text-xl">
+      <span class="active-mbl"><AnOutlinedHome /></span>
     </a>
 
-    <a class="text-info text-xl">
-      <IcProfileCircle/>
+    <a class="text-white text-xl">
+      <span class=""><IcProfileCircle /></span>
     </a>
 
-    <button @click="toggleCart" class="text-info indicator">
+    <button @click="toggleCart" class="text-white indicator">
+      <!-- add active-mbl to div if active -->
       <div class="relative text-xl">
-        <AkShoppingBag/>
-        <span v-if="cartItems.length > 0" class="indicator-item badge bg-blue-500 text-white absolute top-0 right-0 p-1.5">{{ cartItems.length }}</span>
+        <AkShoppingBag />
+        <span v-if="cartItems.length > 0"
+          class="indicator-item badge bg-white text-blue-500 absolute top-0 right-0 p-1.5">{{ cartItems.length }}</span>
       </div>
     </button>
   </nav>
@@ -133,5 +135,12 @@ a:hover {
   /* Remove underline on hover */
   display: flex;
   align-items: center;
+}
+
+.active-mbl {
+  background: rgba(255, 255, 255, 1);
+  color: rgb(59 130 246 / var(--tw-bg-opacity));
+  padding: .25rem;
+  border-radius: .5rem;
 }
 </style>
