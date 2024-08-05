@@ -1,31 +1,31 @@
 <template>
-  <div>
+  <div class="max-w-[90%] md:max-w-[80%] mx-auto">
 
-    <div class="wrapper border-top-bottom sm:max-w-screen-md xl:max-w-screen-xl text-h1 py-2">
-      <span >Food Menu</span>
+    <div class="border-top-bottom text-h1 py-2 text-center md:text-left">
+      <span>Food Menu</span>
     </div>
 
-    <div class="wrapper sm:max-w-screen-md xl:max-w-screen-xl text-h2 pt-2 pb-8">
-      <span >Plates</span>
+    <div class="text-h2 my-6 text-center md:text-left">
+      <span class="font-bold">Plates</span>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  wrapper gap-6 sm:gap-10 xl:gap-14 sm:max-w-screen-md xl:max-w-screen-xl">
+    <div class="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
       <menu-item v-for="item in plates" :imagePath="imagePath"  :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCart"></menu-item>
     </div>
 
-    <div class="wrapper sm:max-w-screen-md xl:max-w-screen-xl text-h2 pt-12 pb-8">
-      <span >Tacos</span>
+    <div class="text-h2 my-6 text-center md:text-left">
+      <span class="font-bold">Tacos</span>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  wrapper gap-6 sm:gap-10 xl:gap-14 max-w-60 sm:max-w-screen-md xl:max-w-screen-xl">
+    <div class="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
       <menu-item v-for="item in tacos" :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCart"></menu-item>
     </div>
 
-    <div class="wrapper sm:max-w-screen-md xl:max-w-screen-xl text-h2 pt-12 pb-8">
-      <span >Tamales</span>
+    <div class="text-h2 my-6 text-center md:text-left">
+      <span class="font-bold">Tamales</span>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  wrapper gap-6 sm:gap-10 xl:gap-14 max-w-60 sm:max-w-screen-md xl:max-w-screen-xl">
+    <div class="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
       <menu-item v-for="item in tamales" :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCart"></menu-item>
     </div>
   </div>
