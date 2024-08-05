@@ -59,23 +59,24 @@
   </nav>
 </template>
 
-<script setup>
+<script>
 import { IcProfileCircle } from '@kalimahapps/vue-icons';
 import { AkShoppingBag } from '@kalimahapps/vue-icons';
 import { AnOutlinedHome } from '@kalimahapps/vue-icons';
-</script>
-
-<script>
 import Cart from './Cart.vue';
 import { globalState } from '../globalstate.js';
 
 export default {
   props: ["showCart"],
   components: {
-    Cart
+    Cart,
+    IcProfileCircle,
+    AkShoppingBag,
+    AnOutlinedHome
   },
   setup() {
     let cartItems = globalState.cartItems;
+    console.log("rendering cartItems: ", cartItems)
 
     const removeItem = (index) => {
       cartItems.splice(index, 1); 
