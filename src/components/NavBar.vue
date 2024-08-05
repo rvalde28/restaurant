@@ -67,12 +67,31 @@ import { AnOutlinedHome } from '@kalimahapps/vue-icons';
 
 <script>
 import Cart from './Cart.vue';
+import { globalState } from '../globalstate.js';
 
 export default {
+  props: ["showCart"],
   components: {
     Cart
   },
-  props: ["cartItems", "showCart"],
+  setup() {
+    let cartItems = globalState.cartItems;
+
+    const removeItem = (index) => {
+      cartItems.splice(index, 1); 
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    };
+
+    const clearCart = () => {
+      cartItems = []
+    };
+
+    return {
+      cartItems,
+      clearCart,
+      removeItem
+    };
+  },
   data() {
     return {
       useMobileNav: false,
@@ -90,13 +109,7 @@ export default {
     toggleCart() {
       this.isCartOpen = false
       this.$emit('expand-cart')
-    },
-    clearCart() {
-      this.$emit('clear-cart')
-    },
-    removeItem(index) {
-      this.$emit('remove-item', index); // Emit event to remove item from cart
-    },
+    }
   },
   mounted() {
     this.$nextTick(() => {

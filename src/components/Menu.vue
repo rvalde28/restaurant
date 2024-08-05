@@ -10,7 +10,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  wrapper gap-6 sm:gap-10 xl:gap-14 sm:max-w-screen-md xl:max-w-screen-xl">
-      <menu-item v-for="item in plates" :imagePath="imagePath"  :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCartHandler"></menu-item>
+      <menu-item v-for="item in plates" :imagePath="imagePath"  :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCart"></menu-item>
     </div>
 
     <div class="wrapper sm:max-w-screen-md xl:max-w-screen-xl text-h2 pt-12 pb-8">
@@ -18,7 +18,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  wrapper gap-6 sm:gap-10 xl:gap-14 max-w-60 sm:max-w-screen-md xl:max-w-screen-xl">
-      <menu-item v-for="item in tacos" :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCartHandler"></menu-item>
+      <menu-item v-for="item in tacos" :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCart"></menu-item>
     </div>
 
     <div class="wrapper sm:max-w-screen-md xl:max-w-screen-xl text-h2 pt-12 pb-8">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  wrapper gap-6 sm:gap-10 xl:gap-14 max-w-60 sm:max-w-screen-md xl:max-w-screen-xl">
-      <menu-item v-for="item in tamales" :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCartHandler"></menu-item>
+      <menu-item v-for="item in tamales" :key="item.id" :item="item" @expand-cart="expandCart" @add-to-cart="addToCart"></menu-item>
     </div>
   </div>
 </template>
@@ -34,10 +34,28 @@
 <script>
 import MenuItem from './MenuItem.vue';
 import ImagePath from '../assets/images/YH_May23_Chicken_Nachos.jpg';
+import { globalState } from '../globalstate.js';
 
 export default {
   components: {
     MenuItem
+  },
+  setup() {
+    const cartItems = globalState.cartItems;
+
+    const saveCart = () => {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    };
+
+    const addToCart = (item) => {
+      cartItems.push(item);
+      saveCart()
+    };
+
+    return {
+      cartItems,
+      addToCart
+    };
   },
   data() {
     return {
@@ -60,9 +78,6 @@ export default {
     };
   },
   methods: {
-    addToCartHandler(item) {
-      this.$emit('add-to-cart', item);
-    },
     expandCart(){
       this.$emit('expand-cart');
     }

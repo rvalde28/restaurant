@@ -4,6 +4,7 @@ import { provideEventBus } from './EventBus'; // Adjust path as per your project
 // import '../src/assets/main.css';
 import './index.css'
 import router from './router';
+import { globalState } from './globalstate.js';
 
 const app = createApp(App);
 
@@ -11,5 +12,7 @@ const app = createApp(App);
 app.use(provideEventBus);
 
 app.use(router);
+
+app.config.globalProperties.$globalState = globalState;
 
 app.mount('#app');
