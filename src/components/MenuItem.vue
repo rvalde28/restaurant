@@ -18,7 +18,7 @@
           <!-- Right button -->
           <button @click="addToCart(item)"   class="flex items-center justify-around p-2 w-36 lg:w-48 rounded-full bg-gray-500 text-white hover:bg-gray-600">
               <div class=""> Add to Cart </div>
-              <div class="">${{ count * item.price }}</div>
+              <div class="">${{ (count * item.price).toFixed(2) }}</div>
           </button>
         </div>
 
@@ -36,7 +36,7 @@
           </div>
           <div class="line"></div>
           <div class="text-menuCard text-left text-lg pt-8 pb-2">
-              ${{ item.price }}
+              ${{ item.price.toFixed(2) }}
           </div >
       </div>
     </button>

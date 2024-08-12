@@ -81,7 +81,7 @@ export default {
         total += item.price * item.count;
       });
 
-      return total
+      return total.toFixed(2)
     }
   }
 };
