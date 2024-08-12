@@ -105,6 +105,7 @@ export default {
       useMobileNav: false,
       windowWidth: window.innerWidth,
       isCartOpen: false,
+      totalItems
     }
   },
   methods: {
