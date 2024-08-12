@@ -28,7 +28,7 @@
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
         </svg>
-        <div>{{ cartItems.length }}</div>
+        <div>{{ totalItems }}</div>
       </button>
 
       <!-- Include Cart component -->
@@ -53,7 +53,7 @@
       <div class="relative text-xl">
         <AkShoppingBag />
         <span v-if="cartItems.length > 0"
-          class="indicator-item badge bg-white text-blue-500 absolute top-0 right-0 p-1.5">{{ cartItems.length }}</span>
+          class="indicator-item badge bg-white text-blue-500 absolute top-0 right-0 p-1.5">{{ totalItems }}</span>
       </div>
     </button>
   </nav>
@@ -64,7 +64,11 @@ import { IcProfileCircle } from '@kalimahapps/vue-icons';
 import { AkShoppingBag } from '@kalimahapps/vue-icons';
 import { AnOutlinedHome } from '@kalimahapps/vue-icons';
 import Cart from './Cart.vue';
-import { globalState } from '../globalstate.js';
+import { globalState, getTotalCount } from '../globalstate';
+import { computed } from 'vue';
+
+// let totalItems = globalState.totalItems
+const totalItems = computed(() => globalState.totalItems);
 
 export default {
   props: ["showCart"],
@@ -76,15 +80,18 @@ export default {
   },
   setup() {
     let cartItems = globalState.cartItems;
+
     console.log("rendering cartItems: ", cartItems)
 
     const removeItem = (index) => {
       cartItems.splice(index, 1); 
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      getTotalCount();
     };
 
     const clearCart = () => {
       cartItems = []
+      getTotalCount();
     };
 
     return {
@@ -98,6 +105,7 @@ export default {
       useMobileNav: false,
       windowWidth: window.innerWidth,
       isCartOpen: false,
+      totalItems
     }
   },
   methods: {

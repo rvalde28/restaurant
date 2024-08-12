@@ -44,6 +44,7 @@
 
 <script>
 import PopupWindow from './PopupWindow.vue';
+import { globalState, getTotalCount } from '../globalstate.js';
 
 const maxOrders = 25
 export default {
@@ -60,15 +61,16 @@ export default {
   methods: {
     addToCart(item) {
       let itemInstance={
-      name: item.name,
-      price: item.price,
-      count: this.count,
+        name: item.name,
+        price: item.price,
+        count: this.count,
       }
       console.log("called")
       this.$emit('add-to-cart', itemInstance);
       this.$emit('expand-cart')
       this.count=1
       this.isOpen = false;
+      getTotalCount();
     },
     countAdd(){
       if (this.count >= maxOrders){
