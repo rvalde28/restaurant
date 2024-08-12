@@ -2,7 +2,7 @@
   <div>
     <div v-if="isOpen || showCart" id="cartBackground" @click="closePopupOnOutsideClick" class="fixed top-0 right-0 bottom-0 left-0 z-10 bg-gray-800 bg-opacity-0"></div>
     <transition name="slide-down">
-      <div  v-if="isOpen || showCart" class="z-[11] bg-white w-1/5 border rounded-lg shadow-lg absolute mt-2 top-full right-5 w-128">
+      <div  v-if="isOpen || showCart" class="z-[11] max-w-[350px] bg-white border rounded-lg shadow-lg absolute mt-2 top-full right-5 w-128">
         <div class="close-link fixed text-xl pl-2">
           <div class="pt-2">
             <a class="text-secondary hover:bg-third hover:rounded-full py-1 px-2" href="javascript:void(0)" @click="closeNav()">&times;</a>
@@ -14,8 +14,8 @@
           <h3 class="text-lg font-semibold mb-4 text-center">Your Cart</h3>
           <!-- Display cart items here -->
           <ul class="pb-4">
-            <li class="py-2 flex " v-for="(item, index) in cartItems" :key="index">
-              <div class="flex group hover:bg-third hover:rounded-lg p-3 w-4/5">
+            <li class="py-2 flex justify-between" v-for="(item, index) in cartItems" :key="index">
+              <div class="flex group hover:bg-third hover:rounded-lg p-3 flex-wrap">
                 <div>
                   ({{ item.count }}) {{ item.name }} - ${{ item.price * item.count }}
                 </div>
